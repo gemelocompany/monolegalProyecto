@@ -1,0 +1,28 @@
+<h1 id="tableLabel">Lista de Facturas</h1>
+
+<p>Aqui se muestran las facturas.</p>
+
+<p *ngIf="!facturas"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="facturas">
+  <thead>
+    <tr>
+      <th>Codigo factura </th>
+      <th>Cliente</th>
+      <th>Total factura</th>
+      <th>estado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let factura of facturas">
+      <td>{{ factura.codigoFactura }}</td>
+      <td>{{ factura.cliente }}</td>
+      <td>{{ factura.totalFactura}}</td>
+      <td>{{ factura.estado}}</td>
+      <td><button class="btn btn-primary" (click)="EnviarCorreo(factura.id)">Enviar correo</button></td>
+
+    </tr>
+  </tbody>
+  
+</table>
+<button class="btn btn-primary" (click)="EnviarCorreos()">Enviar correo a todos</button>
